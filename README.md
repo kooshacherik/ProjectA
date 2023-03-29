@@ -1,5 +1,7 @@
 
 This is a summery of my pair trade strategy . [Pair trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [mean reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy where our highest profits are when price is as far as possible to mean , and since we expect price`s inevitable return toward mean, we can profit if we have bought or sold accordingly . We will investigate among 18 Forex pairs and update the best possible pair at each time unit . I have sliced a window amount of each instrument each time and selected(if exist)  the most two [cointegrated pairs by Engle-Granger Two-Step Method](https://corporatefinanceinstitute.com/resources/data-science/cointegration/) . Lets call them pair A and pair B .  As they are cointegrated , their ratio which is D = A/B is changing around a constant amount which is its mean .
+![](Uploading image.png…)
+
 
 
 We will open and close positions by analyzing D . When D current amount is higher than its mean , then it is a good time to open a Sell Short trade which is to sell A and buy B . By Selling Short we are predicting Ds decrease and have placed our trades accordingly . It is also a Buy Long entry signal if Ds current amount is lower than its mean . In this circumstance , we can predict Ds increase and open positions accordingly by buying A and selling B.
