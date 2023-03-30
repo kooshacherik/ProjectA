@@ -1,7 +1,6 @@
 
 This is a summery of my pair trade strategy . [Pair trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [mean reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy where our highest profits are when price is as far as possible from mean , and since we expect price`s inevitable return toward mean, we can make profit if we have bought or sold accordingly . Here is the pipe line :
-![PipeLine](https://user-images.githubusercontent.com/76734519/228828233-e3243fd2-377e-46fa-985e-d19752481275.png)
-
+![image](https://user-images.githubusercontent.com/76734519/228854482-d3f36b2b-c828-4696-ad3d-45792192a082.png)
 
 
 
@@ -26,21 +25,20 @@ Then we remove those calculated [centroids](https://en.wikipedia.org/wiki/Centro
 ![RemovingPoorCentroids](https://user-images.githubusercontent.com/76734519/228848868-317c3575-ca42-4053-a059-4c8a0736ac22.png)
 
 
-After finding all eligible centroids , we will signal for opening a position if RatioData current price is inside any of these extremums neighborhood.
+After finding all eligible centroids , we will signal for opening a position if RatioData current price is inside any of these eligibles extremums neighborhood.
 
-![image](https://user-images.githubusercontent.com/76734519/228853952-e0601208-9845-47f8-8c4a-6cdd2b1aa126.png)
+![image](https://user-images.githubusercontent.com/76734519/228855041-1104a37e-de9e-41d5-8e41-b06d41c6ed6b.png)
 
-Now that we have defined our way of considering a price as suitable for opening positions , we will investigate situations by which our opened positions must get closed .
- as our strategy suggests, we will close positions as wins when RatioData price is inside a neighborhood of its mean or even better, when they have passed the mean toward the profitable direction .
+Now that we have defined our way of considering a price as suitable for opening positions , we will investigate situations by which our opened positions must get closed .As our strategy suggests, we will close positions as wins when RatioData price is inside a neighborhood of its mean or even better, when they have passed the mean toward the profitable direction .
  
- PIC FOR BOTH CONITION
- condition 2vom bayad in beshe ke age az mean dar jahate dorost rad karde bud . na hatman ndazeye stoploss ta
- 
- 
+Win if price in inside mean neighborhood
+![image](https://user-images.githubusercontent.com/76734519/228859737-22070e3b-5768-4e60-8bc8-a7a687d66376.png)
+
+Win if price has passed the mean toward profitable direction
  
  In other hand , our positions would lose if RatioData price moves opposite to what we have predicted to a amount that is higher than imposed Stop Loss. 
  
 LOSE POS
  
- I have finished almost all technical aspects to this trading project and what has left is parameter tuning using 1 Minute data from 2008 to 2023 .
- These parameters consist of Window Frame , StopLoss Coefficient , Centroid Eligibility Coefficient , Centroid Neighborhood Coefficient , Mean Neighborhood Coefficient an Instruments Cool Down time .
+ I have finished almost all technical aspects to this trading project and what has left is parameter tuning using 1 Minute data from 2008 to 2023 .In fact this pair trade can be performed on various time frames.
+ Its parameters consist of Window Frame , StopLoss Coefficient , Centroid Eligibility Coefficient , Centroid Neighborhood Coefficient , Mean Neighborhood Coefficient an Instruments Cool Down time .
