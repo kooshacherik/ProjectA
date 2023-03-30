@@ -1,17 +1,16 @@
 
-This is a summery of my pair trade strategy . [Pair trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [Mean Reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy where our highest profits are when price is as far as possible from mean , and since we expect price`s inevitable return toward mean, we can make profit if we have bought or sold accordingly . Here is the **pipe line** :
+This is a summery of my pair trade strategy . [Pair Trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [Mean Reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy where our highest profits are when price is as far as possible from mean , and since we expect price`s almost inevitable return toward mean, we can make profit if we have bought or sold accordingly . Here is the **pipe line** :
 
-![image](https://user-images.githubusercontent.com/76734519/228903267-c01945a2-190a-4da6-a0c3-73c895e9fce8.png)
+![image](https://user-images.githubusercontent.com/76734519/228908213-6e5cfa05-c9c0-4787-8b01-b940057e12d0.png)
 
 
-
-We will investigate among 18 Forex pairs and update to the best possible pair at each time unit .We will pick a window amount slice of each instrument for every time unit and select(if exist)  the most two [cointegrated pairs by Engle-Granger Two-Step Method](https://corporatefinanceinstitute.com/resources/data-science/cointegration/) . Lets call them pair A and pair B .  As they are cointegrated , their ratio which is ***RatioData = A/B*** is changing around a constant amount which is its mean . Below **heatmap** is illustrating cointegration between instruments for a specific time interval with green color and how much each pair is cointegrated with others.
+We will investigate among 18 Forex pairs and update to the best possible pair at each time unit .We will pick a window amount slice of each instrument for every time unit and select the most two [cointegrated pairs by Engle-Granger Two-Step Method](https://corporatefinanceinstitute.com/resources/data-science/cointegration/) . Lets call them pair A and pair B .  As they are cointegrated , their ratio which is ***RatioData = A/B*** is changing around a constant amount which is its mean . Below **heatmap** is illustrating cointegration between instruments for a specific time interval with green color and how much each pair is cointegrated with others.
 
 ![HeatMap](https://user-images.githubusercontent.com/76734519/228843179-c1a01357-619f-44c0-bb11-21d2985603b2.png)
 
 
 
-Now that we have our ***RatioData*** we will open and close positions looking at it . Our strategy is a mean reversion , therefore we will profit more if we open our trade when we are farthest from the mean . For instance , below image has marked some points where there is a considerble distance between them and mean and therefore, **proper candidates** for opening positions . 
+Now that we have our ***RatioData*** we will open and close positions looking at it . Our strategy is a mean reversion , therefore we will profit more if we open our trade positions when we are as far as possible from the mean . In below image, some points has been marked where there is a considerble distance between them and mean and therefore, **proper candidates** for opening positions . 
 ![image](https://user-images.githubusercontent.com/76734519/228869310-ccf78d12-f8c3-4a17-afbb-b07013d16666.png)
 
 
