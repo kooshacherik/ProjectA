@@ -10,7 +10,7 @@ We will investigate among 18 Forex pairs and update to the best possible pair at
 
 
 Now that we have our RatioData we will open and close positions looking at it . Our strategy is a mean reversion , therefore we will profit more if we open our trade when we are farthest from the mean . For instance , below image has marked some points where there is a considerble distance between them and mean . 
-![image](https://user-images.githubusercontent.com/76734519/228852137-ad942223-82d6-4d6e-bfa6-b7f6fc238408.png)
+![image](https://user-images.githubusercontent.com/76734519/228869310-ccf78d12-f8c3-4a17-afbb-b07013d16666.png)
 
 When we sell short , we predict decrease for our data. Our data is A/B and if we predict its decrease then we need to open a position for decrease in A which is RatioData numerator and increase in B which is RatioData denominator . Therefore , we need to sell A and buy B . Buy long is the exact opposit. our data is far from and below the mean . So we predict its increase . For trading accordingly , we need to open positions that would profit from RatioData increase By buying A and selling B , we predecit increase for A/B . 
 
