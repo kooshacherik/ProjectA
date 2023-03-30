@@ -10,20 +10,25 @@ We will investigate among 18 Forex pairs and update to the best possible pair at
 
 
 
-We will open and close positions by analyzing RatioData. When RatioData current amount is higher than its mean , then it is a good time to open a Sell Short trade which is to sell A and buy B . By Selling Short we are predicting RatioData decrease and have placed our trades accordingly . It is also a Buy Long entry signal if RatioData current amount is lower than its mean . In this circumstance , we can predict RatioData increase and open positions accordingly by buying A and selling B.
-PAIR TRADE JUSTIFICTION
+Now that we have our RatioData we will open and close positions looking at it . Our strategy is a mean reversion , therefore we will profit more if we open our trade when we are farthest from the mean . For instance , below image has marked some points where there is a considerble distance between them and mean . 
+![image](https://user-images.githubusercontent.com/76734519/228852137-ad942223-82d6-4d6e-bfa6-b7f6fc238408.png)
+
+When we sell short , we predict decrease for our data. Our data is A/B and if we predict its decrease then we need to open a position for decrease in A which is RatioData numerator and increase in B which is RatioData denominator . Therefore , we need to sell A and buy B . Buy long is the exact opposit. our data is far from and below the mean . So we predict its increase . For trading accordingly , we need to open positions that would profit from RatioData increase By buying A and selling B , we predecit increase for A/B . 
 
 
-Lets now walk through choosing an entry signal . We will find all RatioData extremums
-ALL EX
+Lets now walk through choosing these entry s . First we need to find all RatioData extremums
+![AllExtremum](https://user-images.githubusercontent.com/76734519/228848696-7b62408c-10fe-4723-a3d2-575c736100f7.png)
+
 Then classify them by [K-Means](https://en.wikipedia.org/wiki/K-means_clustering) 
-AFTER KMEAN
+![After-KMean](https://user-images.githubusercontent.com/76734519/228848755-168d3d82-d71d-486d-8565-dab1225aaecf.png)
+
 Then we remove those calculated [centroids](https://en.wikipedia.org/wiki/Centroid) which are too close to the mean. 
-AFTER REMOVAL
+![RemovingPoorCentroids](https://user-images.githubusercontent.com/76734519/228848868-317c3575-ca42-4053-a059-4c8a0736ac22.png)
+
 
 After finding all eligible centroids , we will signal for opening a position if RatioData current price is inside any of these extremums neighborhood.
 
-SIGNAL CHECK . BOTH entry and non entry
+![image](https://user-images.githubusercontent.com/76734519/228853952-e0601208-9845-47f8-8c4a-6cdd2b1aa126.png)
 
 Now that we have defined our way of considering a price as suitable for opening positions , we will investigate situations by which our opened positions must get closed .
  as our strategy suggests, we will close positions as wins when RatioData price is inside a neighborhood of its mean or even better, when they have passed the mean toward the profitable direction .
