@@ -22,8 +22,7 @@ Then classify them by [K-Means](https://en.wikipedia.org/wiki/K-means_clustering
 ![After-KMean](https://user-images.githubusercontent.com/76734519/228848755-168d3d82-d71d-486d-8565-dab1225aaecf.png)
 
 Then we remove those calculated [centroids](https://en.wikipedia.org/wiki/Centroid) which are too close to the mean. 
-![RemovingPoorCentroids](https://user-images.githubusercontent.com/76734519/228848868-317c3575-ca42-4053-a059-4c8a0736ac22.png)
-
+![image](https://user-images.githubusercontent.com/76734519/228866443-6f9e39b7-310a-48b0-bf0f-e779ada91b18.png)
 
 After finding all eligible centroids , we will signal for opening a position if RatioData current price is inside any of these eligibles extremums neighborhood.
 
@@ -32,13 +31,11 @@ After finding all eligible centroids , we will signal for opening a position if 
 Now that we have defined our way of considering a price as suitable for opening positions , we will investigate situations by which our opened positions must get closed .As our strategy suggests, we will close positions as wins when RatioData price is inside a neighborhood of its mean or even better, when they have passed the mean toward the profitable direction .
  
 Win if price in inside mean neighborhood
-![image](https://user-images.githubusercontent.com/76734519/228859737-22070e3b-5768-4e60-8bc8-a7a687d66376.png)
-
+![image](https://user-images.githubusercontent.com/76734519/228862415-76451384-76c7-4353-b597-3cf2f678f724.png)
 Win if price has passed the mean toward profitable direction
- 
- In other hand , our positions would lose if RatioData price moves opposite to what we have predicted to a amount that is higher than imposed Stop Loss. 
- 
-LOSE POS
- 
- I have finished almost all technical aspects to this trading project and what has left is parameter tuning using 1 Minute data from 2008 to 2023 .In fact this pair trade can be performed on various time frames.
- Its parameters consist of Window Frame , StopLoss Coefficient , Centroid Eligibility Coefficient , Centroid Neighborhood Coefficient , Mean Neighborhood Coefficient an Instruments Cool Down time .
+ ![image](https://user-images.githubusercontent.com/76734519/228867945-2073fbea-b4d5-4f4d-9943-c7cddcbd2cac.png)
+
+In other hand , our positions would lose if RatioData price moves opposite to what we have predicted to a amount that is higher than imposed Stop Loss. 
+ ![image](https://user-images.githubusercontent.com/76734519/228864568-cfb5214f-b9e0-4c61-9275-013426ce55da.png)
+
+I have finished almost all technical aspects to this trading project and what has left is parameter tuning using 1 Minute data from 2008 to 2023 .In fact this pair trade can be performed on various time frames. These parameters are Window Frame , StopLoss Coefficient , Centroid Eligibility Coefficient , Centroid Neighborhood Coefficient , Mean Neighborhood Coefficient an Instruments Cool Down time .
