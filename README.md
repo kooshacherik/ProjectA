@@ -48,13 +48,12 @@ Win if price in inside mean neighborhood :
 ![image](https://user-images.githubusercontent.com/76734519/228862415-76451384-76c7-4353-b597-3cf2f678f724.png)
 
 
-Win if price has passed the mean toward profitable direction :
+Also Win if price has passed the mean toward profitable direction :
 
-![image](https://user-images.githubusercontent.com/76734519/228867945-2073fbea-b4d5-4f4d-9943-c7cddcbd2cac.png)
+![image](https://user-images.githubusercontent.com/76734519/228919165-ce7eaa3b-6c8d-4ed0-b5a8-ab92c73ed4d4.png)
 
 
-
-In other hand , our positions would **lose** if ***RatioData*** price moves opposite to what we have predicted to a amount that is higher than the imposed Stop Loss:
+In other hand , our positions would **lose** if ***RatioData*** price moves opposite to what we have predicted to a amount to a  higher amount than the imposed Stop Loss:
 ![image](https://user-images.githubusercontent.com/76734519/228864568-cfb5214f-b9e0-4c61-9275-013426ce55da.png)
 
 
