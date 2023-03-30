@@ -1,26 +1,26 @@
 
-This is a summery of my pair trade strategy . [Pair trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [mean reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy where our highest profits are when price is as far as possible from mean , and since we expect price`s inevitable return toward mean, we can make profit if we have bought or sold accordingly . Here is the **pipe line** :
+This is a summery of my pair trade strategy . [Pair trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [Mean Reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy where our highest profits are when price is as far as possible from mean , and since we expect price`s inevitable return toward mean, we can make profit if we have bought or sold accordingly . Here is the **pipe line** :
 
 ![image](https://user-images.githubusercontent.com/76734519/228903267-c01945a2-190a-4da6-a0c3-73c895e9fce8.png)
 
 
 
-We will investigate among 18 Forex pairs and update to the best possible pair at each time unit .We will pick a window amount slice of each instrument for every time unit and select(if exist)  the most two [cointegrated pairs by Engle-Granger Two-Step Method](https://corporatefinanceinstitute.com/resources/data-science/cointegration/) . Lets call them pair A and pair B .  As they are cointegrated , their ratio which is RatioData = A/B is changing around a constant amount which is its mean . Below **heatmap** is illustrating cointegration between instruments for a specific time interval with green color and how much each pair is cointegrated with others.
+We will investigate among 18 Forex pairs and update to the best possible pair at each time unit .We will pick a window amount slice of each instrument for every time unit and select(if exist)  the most two [cointegrated pairs by Engle-Granger Two-Step Method](https://corporatefinanceinstitute.com/resources/data-science/cointegration/) . Lets call them pair A and pair B .  As they are cointegrated , their ratio which is ***RatioData = A/B*** is changing around a constant amount which is its mean . Below **heatmap** is illustrating cointegration between instruments for a specific time interval with green color and how much each pair is cointegrated with others.
 
 ![HeatMap](https://user-images.githubusercontent.com/76734519/228843179-c1a01357-619f-44c0-bb11-21d2985603b2.png)
 
 
 
-Now that we have our RatioData we will open and close positions looking at it . Our strategy is a mean reversion , therefore we will profit more if we open our trade when we are farthest from the mean . For instance , below image has marked some points where there is a considerble distance between them and mean and therefore, **proper candidates** for opening positions . 
+Now that we have our ***RatioData*** we will open and close positions looking at it . Our strategy is a mean reversion , therefore we will profit more if we open our trade when we are farthest from the mean . For instance , below image has marked some points where there is a considerble distance between them and mean and therefore, **proper candidates** for opening positions . 
 ![image](https://user-images.githubusercontent.com/76734519/228869310-ccf78d12-f8c3-4a17-afbb-b07013d16666.png)
 
 
 
-When we sell short , we predict decrease for our data. Our data is A/B and if we predict its decrease, then we need to open two positions,  one for decrease in A which is RatioData numerator and other one for increase in B which is RatioData denominator. Therefore , we need to sell A and buy B . Buy long is the exact opposit. our data is still far from but, below the mean . So we predict its increase . For trading accordingly , we need to open positions that would profit from RatioData increase and predict for A/B raise, by buying A and selling B.
+When we sell short , we predict decrease for our data. Our data is ***A/B*** and if we predict its decrease, then we need to open two positions,  one for decrease in ***A*** which is RatioData numerator and other one for increase in ***B*** which is RatioData denominator. Therefore , we need to sell ***A*** and buy ***B*** . Buy long is the exact opposit. our data is still far from but, below the mean . So we predict its increase . For trading accordingly , we need to open positions that would profit from ***RatioData*** increase and predict for ***A/B*** raise, by buying ***A*** and selling ***B***.
 
 
 
-Lets now walk through choosing these entries. First we find all RatioData **extremums** :
+Lets now walk through choosing these entries. First we find all ***RatioData***v **extremums** :
 
 ![AllExtremum](https://user-images.githubusercontent.com/76734519/228848696-7b62408c-10fe-4723-a3d2-575c736100f7.png)
 
@@ -38,11 +38,11 @@ Then we remove those calculated **[centroids](https://en.wikipedia.org/wiki/Cent
 
 
 
-After finding all eligible centroids , we will **singal to open** a position if RatioData current price is inside any of these eligible centroids neighborhood:
+After finding all eligible centroids , we will **singal to open** a position if ***RatioData*** current price is inside any of these eligible centroids neighborhood:
 
 ![image](https://user-images.githubusercontent.com/76734519/228855041-1104a37e-de9e-41d5-8e41-b06d41c6ed6b.png)
 
-Now that we have defined our way of considering a price as suitable for opening positions , we will investigate situations by which our opened positions must get closed .As our strategy suggests, we will close positions as **win** when RatioData price is inside a neighborhood of its mean or even better, when they have passed the mean toward the profitable direction .
+Now that we have defined our way of considering a price as suitable for opening positions , we will investigate situations by which our opened positions must get closed .As our strategy suggests, we will close positions as **win** when ***RatioData*** price is inside a neighborhood of its mean or even better, when they have passed the mean toward the profitable direction .
  
 Win if price in inside mean neighborhood :
 
@@ -55,7 +55,7 @@ Win if price has passed the mean toward profitable direction :
 
 
 
-In other hand , our positions would **lose** if RatioData price moves opposite to what we have predicted to a amount that is higher than the imposed Stop Loss:
+In other hand , our positions would **lose** if ***RatioData*** price moves opposite to what we have predicted to a amount that is higher than the imposed Stop Loss:
 ![image](https://user-images.githubusercontent.com/76734519/228864568-cfb5214f-b9e0-4c61-9275-013426ce55da.png)
 
 
