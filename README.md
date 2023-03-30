@@ -38,9 +38,11 @@ Then we remove those calculated **[centroids](https://en.wikipedia.org/wiki/Cent
 
 
 
-After finding all eligible centroids , we will **singal to open** a position if ***RatioData*** current price is inside any of these eligible centroids neighborhood:
+After finding all eligible centroids , we will **singal to enter** to a position if ***RatioData*** current price is inside the neighborhood of any eligible centroid :
 
-![image](https://user-images.githubusercontent.com/76734519/228855041-1104a37e-de9e-41d5-8e41-b06d41c6ed6b.png)
+![image](https://user-images.githubusercontent.com/76734519/228946062-b3d772c6-9051-480a-8f79-cea94f5da2bf.png)
+
+
 
 Now that we have defined our way of considering a price as suitable for opening positions , we will investigate situations by which our opened positions must get closed .As our strategy suggests, we will close positions as **win** when ***RatioData*** price is inside a neighborhood of its mean or even better, when they have passed the mean toward the profitable direction .
  
