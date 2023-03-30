@@ -1,7 +1,8 @@
 
 This is a summery of my pair trade strategy . [Pair Trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [Mean Reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy where our highest profits are when price is as far as possible from mean , and since we expect price`s almost inevitable return toward mean, we can make profit if we have bought or sold accordingly . Here is the **pipe line** :
 
-![image](https://user-images.githubusercontent.com/76734519/228908213-6e5cfa05-c9c0-4787-8b01-b940057e12d0.png)
+![image](https://user-images.githubusercontent.com/76734519/228919768-c2632144-2da3-4652-aa5a-8f128d4dfd66.png)
+
 
 
 We will investigate among 18 Forex pairs and update to the best possible pair at each time unit .We will pick a window amount slice of each instrument for every time unit and select the most two [cointegrated pairs by Engle-Granger Two-Step Method](https://corporatefinanceinstitute.com/resources/data-science/cointegration/) . Lets call them pair A and pair B .  As they are cointegrated , their ratio which is ***RatioData = A/B*** is changing around a constant amount which is its mean . Below **heatmap** is illustrating cointegration between instruments for a specific time interval with green color and how much each pair is cointegrated with others.
