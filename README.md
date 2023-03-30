@@ -1,29 +1,31 @@
 
 This is a summery of my pair trade strategy . [Pair trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [mean reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy where our highest profits are when price is as far as possible from mean , and since we expect price`s inevitable return toward mean, we can make profit if we have bought or sold accordingly . Here is the pipe line :
+Pipe Line
+```
 ![Pipe Line](https://user-images.githubusercontent.com/76734519/228887340-bb51dbcb-d8a6-4232-819f-df25c2e57511.png)
-
+```
 
 We will investigate among 18 Forex pairs and update to the best possible pair at each time unit .We will pick a window amount slice of each instrument for every time unit and select(if exist)  the most two [cointegrated pairs by Engle-Granger Two-Step Method](https://corporatefinanceinstitute.com/resources/data-science/cointegration/) . Lets call them pair A and pair B .  As they are cointegrated , their ratio which is RatioData = A/B is changing around a constant amount which is its mean . Below heatmap is illustrating cointegration between instruments for a specific time interval with green color and how much each pair is cointegrated with others.
 ![HeatMap](https://user-images.githubusercontent.com/76734519/228843179-c1a01357-619f-44c0-bb11-21d2985603b2.png)
 
 
 
-Now that we have our RatioData we will open and close positions looking at it . Our strategy is a mean reversion , therefore we will profit more if we open our trade when we are farthest from the mean . For instance , below image has marked some points where there is a considerble distance between them and mean . 
+Now that we have our RatioData we will open and close positions looking at it . Our strategy is a mean reversion , therefore we will profit more if we open our trade when we are farthest from the mean . For instance , below image has marked some points where there is a considerble distance between them and mean and therefore, proper candidates for opening positions . 
 ![image](https://user-images.githubusercontent.com/76734519/228869310-ccf78d12-f8c3-4a17-afbb-b07013d16666.png)
 
-When we sell short , we predict decrease for our data. Our data is A/B and if we predict its decrease then we need to open a position for decrease in A which is RatioData numerator and increase in B which is RatioData denominator . Therefore , we need to sell A and buy B . Buy long is the exact opposit. our data is far from and below the mean . So we predict its increase . For trading accordingly , we need to open positions that would profit from RatioData increase By buying A and selling B , we predecit increase for A/B . 
+When we sell short , we predict decrease for our data. Our data is A/B and if we predict its decrease, then we need to open two positions,  one for decrease in A which is RatioData numerator and other one for increase in B which is RatioData denominator. Therefore , we need to sell A and buy B . Buy long is the exact opposit. our data is still far from but, below the mean . So we predict its increase . For trading accordingly , we need to open positions that would profit from RatioData increase and predict for A/B raise, by buying A and selling B.
 
 
-Lets now walk through choosing these entry s . First we need to find all RatioData extremums
+Lets now walk through choosing these entries. First we find all RatioData extremums
 ![AllExtremum](https://user-images.githubusercontent.com/76734519/228848696-7b62408c-10fe-4723-a3d2-575c736100f7.png)
 
-Then classify them by [K-Means](https://en.wikipedia.org/wiki/K-means_clustering) 
+Then classify extremums by [K-Means](https://en.wikipedia.org/wiki/K-means_clustering) 
 ![After-KMean](https://user-images.githubusercontent.com/76734519/228848755-168d3d82-d71d-486d-8565-dab1225aaecf.png)
 
 Then we remove those calculated [centroids](https://en.wikipedia.org/wiki/Centroid) which are too close to the mean. 
 ![image](https://user-images.githubusercontent.com/76734519/228866443-6f9e39b7-310a-48b0-bf0f-e779ada91b18.png)
 
-After finding all eligible centroids , we will signal for opening a position if RatioData current price is inside any of these eligibles extremums neighborhood.
+After finding all eligible centroids , we will signal for opening a position if RatioData current price is inside any of these eligible centroids neighborhood.
 
 ![image](https://user-images.githubusercontent.com/76734519/228855041-1104a37e-de9e-41d5-8e41-b06d41c6ed6b.png)
 
@@ -34,7 +36,7 @@ Win if price in inside mean neighborhood
 Win if price has passed the mean toward profitable direction
  ![image](https://user-images.githubusercontent.com/76734519/228867945-2073fbea-b4d5-4f4d-9943-c7cddcbd2cac.png)
 
-In other hand , our positions would lose if RatioData price moves opposite to what we have predicted to a amount that is higher than imposed Stop Loss. 
+In other hand , our positions would lose if RatioData price moves opposite to what we have predicted to a amount that is higher than the imposed Stop Loss. 
  ![image](https://user-images.githubusercontent.com/76734519/228864568-cfb5214f-b9e0-4c61-9275-013426ce55da.png)
 
-I have finished almost all technical aspects to this trading project and what has left is parameter tuning using 1 Minute data from 2008 to 2023 .In fact this pair trade can be performed on various time frames. These parameters are Window Frame , StopLoss Coefficient , Centroid Eligibility Coefficient , Centroid Neighborhood Coefficient , Mean Neighborhood Coefficient an Instruments Cool Down time .
+What has left is parameter tuning using 1-Minute data from 2008 to 2023 .I believe this pair trade can be deployed on various time frames as well. These parameters are  Window Frame lenghth  , StopLoss Coefficient , Centroid Eligibility Coefficient , Centroid Neighborhood Coefficient , Mean Neighborhood Coefficient and Instruments Cool Down time .
