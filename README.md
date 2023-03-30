@@ -19,7 +19,7 @@ When we sell short , we predict decrease for our data. Our data is ***A/B*** and
 
 
 
-Lets now walk through choosing these entries. First we find all ***RatioData***v **extremums** :
+Lets now walk through choosing these entries. First we find all ***RatioData*** **extremums** :
 
 ![AllExtremum](https://user-images.githubusercontent.com/76734519/228848696-7b62408c-10fe-4723-a3d2-575c736100f7.png)
 
