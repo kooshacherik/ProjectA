@@ -80,7 +80,7 @@ class TradeMachine(object):
         #rof = ax.axvline(100)
 
 
-        for i in range(980 , self.DataPortion):
+        for i in range(window , self.DataPortion):
             print('======================================================================')
             print('Round Number :'+str(j))
             j += 1 
