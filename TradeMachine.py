@@ -1,5 +1,4 @@
 
-import fxcmpy
 import datetime as dt
 import TradeMachineMethods as TMM
 import seaborn
@@ -80,7 +79,7 @@ class TradeMachine(object):
         #rof = ax.axvline(100)
 
 
-        for i in range(window , self.DataPortion):
+        for i in range (window , self.DataPortion):
             print('======================================================================')
             print('Round Number :'+str(j))
             j += 1 
@@ -153,58 +152,78 @@ class TradeMachine(object):
 
 
 
-            ##---------->(Closed Position Trade Charts)<----------
-            #    for oci in OCI: 
-            #        pa =DS[oci[2]+'.csv']
-            #        pb =DS[oci[3]+'.csv']
-            #        d = pa/pb
-            #        mean = oci[4]
-            #        R = oci[5]/self.RangeSliceAroundMean
+            #---------->(Closed Position Trade Charts)<----------
+                #for oci in OCI: 
 
-            #        UpBound = (oci[1]+ window)
-            #        LowBound = (oci[0]-window)
-            #        HEY = d.iloc [LowBound:UpBound]
 
-                  
-
+                #    #FOR PERESENTATION (TAB BACK AFTER ) ===========================================
                     
+                #    print('plots for order number : '+str(oci[12]))
+                #    pa =DS[oci[2]+'.csv']
+                #    pb =DS[oci[3]+'.csv']
+                #    d = pa/pb
+                #    mean = oci[4]
+                #    R = oci[5]/self.RangeSliceAroundMean
 
+                #    UpBound = (oci[1]+ window)
+                #    LowBound = (oci[0]-window)
 
+                    #HEY = d.iloc [LowBound:UpBound]
+                    #pa = pa.iloc[LowBound:UpBound]
+                    #pb = pb.iloc[LowBound:UpBound]
 
-            #        print('plots for order number : '+str(oci[12]))
-            #        #---------->(Ratio Chart)<----------
+                    #---------->(Ratio Chart)<----------
                    
-            #        plt.figure(1)
-            #        plt.plot(HEY)
-            #        plt.axhline(mean+R,c='y')
-            #        plt.axhline(mean,c='r')
-            #        plt.axhline(mean-R,c='y')
+                    #plt.figure(1)
+                    #plt.plot(HEY)
+                    #plt.title(oci[2]+'/'+oci[3])
 
-            #        plt.axhline(oci[15],c='m')
-            #        plt.axhline(oci[15]+(abs(oci[15]-mean)/self.CentroidSliceAroundItself),c='m')
-            #        plt.axhline(oci[15]-(abs(oci[15]-mean)/self.CentroidSliceAroundItself),c='m')
-                    
-            #        plt.plot([oci[0],oci[1]],[oci[6],oci[7]],'y')
-            #        plt.plot([oci[0],oci[1]],[HEY[oci[0]],HEY[oci[1]]],'r')
-            #        plt.show()
-            #        #---------->(Numerator PairA Chart)<----------
-            #        pa = pa.iloc [(oci[0]-window) : (oci[1]+ window) ]
-            #        plt.figure(2)
-            #        plt.plot(pa)
-            #        plt.ylabel(oci[2])
+                    #plt.axhline(mean+R,c='y')
+                    #plt.axhline(mean,c='r')
+                    #plt.axhline(mean-R,c='y')
 
-            #        plt.plot([oci[0],oci[1]],[oci[8],oci[10]],'k')
-            #        plt.plot([oci[0],oci[1]],[pa[oci[0]],pa[oci[1]]],'y')
-            #        plt.show()
-            #        #---------->(Denominator PairB Chart)<----------
-            #        pb = pb.iloc [(oci[0]-window) : (oci[1]+ window) ]
-            #        plt.figure(3)
-            #        plt.plot(pb)
-            #        plt.ylabel(oci[3])
+                    #if oci[17]:
+                    #    plt.axhline(oci[6]+oci[16],c='y',label = 'StopLoss')
+                    #else:
+                    #    plt.axhline(oci[6]-oci[16],c='y',label = 'StopLoss')
+
+
+                    #plt.axhline(oci[15],c='m')
+                    #plt.axhline(oci[15]+(abs(oci[15]-mean)/self.CentroidSliceAroundItself),c='c')
+                    #plt.axhline(oci[15]-(abs(oci[15]-mean)/self.CentroidSliceAroundItself),c='c')
                     
-            #        plt.plot([oci[0],oci[1]],[oci[9],oci[11]],'k')
-            #        plt.plot([oci[0],oci[1]],[pb[oci[0]],pb[oci[1]]],'y')
-            #        plt.show()
+                    #plt.plot([oci[0],oci[1]],[oci[6],oci[7]],'y')
+                    #plt.plot([oci[0],oci[1]],[HEY[oci[0]],HEY[oci[1]]],'r')
+                    #plt.show()
+                    ##---------->(Numerator PairA Chart)<----------
+                    #pa = pa.iloc [(oci[0]-window) : (oci[1]+ window) ]
+                    #print(pa)
+                    #plt.figure(2)
+                    #plt.plot(pa)
+                    #plt.title(oci[2])
+
+                    #plt.plot([oci[0],oci[1]],[oci[8],oci[10]],'k')
+                    #plt.plot([oci[0],oci[1]],[pa[oci[0]],pa[oci[1]]],'y')
+                    #plt.show()
+                    ##---------->(Denominator PairB Chart)<----------
+                    #pb = pb.iloc [(oci[0]-window) : (oci[1]+ window) ]
+                    #plt.figure(3)
+                    #plt.plot(pb)
+                    #plt.title(oci[3])
+                    
+                    #plt.plot([oci[0],oci[1]],[oci[9],oci[11]],'k')
+                    #plt.plot([oci[0],oci[1]],[pb[oci[0]],pb[oci[1]]],'y')
+                    #plt.show()
+
+
+
+
+
+
+
+            
+            
+
 
 
             #---------->(Balance Check)<----------
@@ -237,8 +256,6 @@ class TradeMachine(object):
 
 
             DATA = DATA.to_numpy()
-            PA = PairA.to_numpy()
-            PB = PairB.to_numpy()
 
 
             CurrA   =   PairA.iloc[-1]
@@ -247,11 +264,6 @@ class TradeMachine(object):
 
 
             MEAN = DATA.mean()
-            MEANA = PairA.mean()
-            MEANB = PairB.mean()
-
-
-
 
             #---------->(Finding All Extremums)<----------
             [local_max , local_min,MaxI,MinI]  = TMM.AllMaxMin(DATA, MEAN)
@@ -265,19 +277,17 @@ class TradeMachine(object):
 
             #---------->(PLOT All Centroids And Mean)<----------
             #plt.plot(DATA)
-
             #for u in SuppCentroids:
-            #    plt.axhline(u[1])
+            #    plt.axhline(u[1],c= 'k')
 
             #for u in RessCentroids:
-            #    plt.axhline(u[1])
+            #    plt.axhline(u[1],c= 'k')
 
-            #plt.axhline(MEAN,c='r')
-
-            #plt.show()
-
+            #plt.show()     
             
-            
+
+
+
   
             (SignalMsg, TheExtremum) = TMM.EntrySignal (currPrice , SuppCentroids, RessCentroids, MEAN,Range,self.EligibleCentroidCoef,self.CentroidSliceAroundItself)
 
@@ -288,8 +298,7 @@ class TradeMachine(object):
                 print(CoolDownDict)
                 print(P1+' and '+P2+' : Cool Down begins')
 
-              
-    
+
             if SignalMsg == 'SellShort':
 
                 BetaA = TMM.BETA(PairA)
@@ -303,6 +312,7 @@ class TradeMachine(object):
 
                 Balance -= (perTrade)
                 numberOfTrades += 1
+                print('Order Number : '+str(numberOfTrades))
 
                 stopLoss =  abs((currPrice - MEAN) * self.SLCoef)
                 OrdersList.append([currPrice,MEAN ,stopLoss,Range,numberOfTrades,CurrA,CurrB,P1,P2,i,True,VolA,VolB,BetaA,BetaB,RangePa,RangePb,TheExtremum])
@@ -318,6 +328,7 @@ class TradeMachine(object):
         
                 Balance -= (perTrade)
                 numberOfTrades += 1
+                print('Order Number : '+str(numberOfTrades))
 
                 stopLoss = abs((currPrice - MEAN) * self.SLCoef)
                 OrdersList.append([currPrice,MEAN ,stopLoss,Range,numberOfTrades,CurrA,CurrB,P1,P2,i,False,VolA,VolB,BetaA,BetaB,RangePa,RangePb,TheExtremum])
