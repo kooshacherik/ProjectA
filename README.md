@@ -5,7 +5,7 @@ This is a summery of my pair trade strategy . [Pair Trade](https://en.wikipedia.
 
 
 
-We will investigate among 18 Forex pairs and update to the best possible pair at each time unit. We will pick a window (100 in images) amount slice of each instrument for every time unit and select the most two [cointegrated pairs by Engle-Granger Two-Step Method](https://corporatefinanceinstitute.com/resources/data-science/cointegration/) . Lets call them pair A and pair B .  As they are cointegrated , their ratio which is ***RatioData = A/B*** is changing around a constant amount which is its mean . In below **heatmam**, cointegration between pairs has been illustrated with green color and their number being closer to 0 :
+We will investigate among 18 Forex pairs and update to the best possible pair at each time unit. We will pick a window (100 in images) amount slice of each instrument for every time unit and select the most two [cointegrated pairs by Engle-Granger Two-Step Method](https://corporatefinanceinstitute.com/resources/data-science/cointegration/) . Lets call them pair A and pair B .  As they are cointegrated , their ratio which is ***RatioData = A/B*** is changing around a constant amount which is its mean . In below **heatmap**, cointegration between pairs has been illustrated with green color and their number being closer to 0 :
 
 ![HeatMap](https://user-images.githubusercontent.com/76734519/228843179-c1a01357-619f-44c0-bb11-21d2985603b2.png)
 
