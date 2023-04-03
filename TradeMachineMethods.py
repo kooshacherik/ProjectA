@@ -23,7 +23,7 @@ import os
 #---------------------------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------------------------
 
-#pvalue : MacKinnon”s approximate, asymptotic p-value based on MacKinnon (1994)
+#pvalue : MacKinnon`s approximate, asymptotic p-value based on MacKinnon (1994)
 def find_cointegrated_pairs(data):
     n = data.shape[1]
     score_matrix = np.zeros((n, n))
@@ -158,13 +158,13 @@ def AllMaxMin(data, mean):
     #plt.axhline(mean,c='r')
     #plt.plot(MaxI,data[MaxI],'o')
     #plt.plot(MinI,data[MinI],'o')
-
+    #plt.title("Data All Extremums")
     ##plt.plot(MaxI,'o')
     ##plt.plot(MinI,'o')
     
     #plt.show()
-    #plt.pause(1)
-    #plt.close()
+    ##plt.pause(1)
+    ##plt.close()
 
     return [MAX,MIN,MaxI,MinI]
 
@@ -228,11 +228,13 @@ def Centroids(whatever,Data,mean):
 #---------------------------------------------------------------------------------------------------------------------
 
 def EntrySignal (currPrice, SuppCentroids, RessCentroids,mean ,Range,EligCentroid,CentroidNeighbor):
-    
-    
+    distance = 100000
+    nearest = 0
     if currPrice > mean :
         for s in SuppCentroids:
-            
+            if distance > abs(s[1]- currPrice):
+                distance = abs(s[1]- currPrice)
+                nearest = s[1]
             if abs(s[1] - mean) <= (1/EligCentroid) *Range:
                 continue
 
@@ -242,13 +244,15 @@ def EntrySignal (currPrice, SuppCentroids, RessCentroids,mean ,Range,EligCentroi
 
     else :
         for s in RessCentroids:
-            
+            if distance > abs(s[1]- currPrice):
+               distance = abs(s[1]- currPrice)
+               nearest = s[1]
             if abs(s[1] -mean) <= (1/EligCentroid)*Range:
                 continue
 
             if s[1] <= currPrice+(abs(s[1] - mean)/CentroidNeighbor) and  s[1] >= currPrice -(abs(s[1] - mean)/CentroidNeighbor):
                 return ('BuyLong',s[1])
-    return ("NoAction",mean)
+    return ("NoAction",nearest)
 
 #---------------------------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------------------------
@@ -335,13 +339,9 @@ def positionCheck (Orders, currentPairPrices,currentRatioPrices,CurrentIndex,Pip
     l = len(Orders)
 
     for i in range(l):
-        #open position price Ratio data
         SScurr = Orders[i][0]
-        #mean Ratio data
         mean   = Orders[i][1]
-        #stop loss Ratio data
         SL     = Orders[i][2]
-        #mean Ratio data
         Range  = Orders[i][3]
 
         currA  = Orders[i][5]
@@ -396,13 +396,14 @@ def positionCheck (Orders, currentPairPrices,currentRatioPrices,CurrentIndex,Pip
 
            
             print('order number '+str(Orders[i][4])+' is closed SUCCESSFULLY')
-            OpenCloseIndexes.append([TradeIndex , CurrentIndex,Pa,Pb,mean,Range,SScurr,SSNewCurr,currA,currB,NcurrA,NcurrB,Orders[i][4],VolA,VolB,EX])
+            OpenCloseIndexes.append([TradeIndex , CurrentIndex,Pa,Pb,mean,Range,SScurr,SSNewCurr,currA,currB,NcurrA,NcurrB,Orders[i][4],VolA,VolB,EX,SL,PosType])
 
             removeOrders.append(Orders[i][4])
 
         elif PipbyRatio >= SL : 
             L += 1
-    
+         #condition 2vom bayad in beshe ke age az mean dar jahate dorost rad karde bud . na hatman ndazeye stoploss ta
+
             if PosType  :
                 [resA , pipA] = PnLCheck(currA,NcurrA,'s')
                 [resB , pipB] = PnLCheck(currB,NcurrB,'b')
@@ -419,7 +420,7 @@ def positionCheck (Orders, currentPairPrices,currentRatioPrices,CurrentIndex,Pip
                     print("This order surprisingly end up wining quiet good actually")
 
                     #Vol LAZEME?
-                    OpenCloseIndexes.append([TradeIndex , CurrentIndex,Pa,Pb,mean,Range,SScurr,SSNewCurr,currA,currB,NcurrA,NcurrB,Orders[i][4],VolA,VolB,EX])
+                    OpenCloseIndexes.append([TradeIndex , CurrentIndex,Pa,Pb,mean,Range,SScurr,SSNewCurr,currA,currB,NcurrA,NcurrB,Orders[i][4],VolA,VolB,EX,SL,PosType])
                     L -= 1
                     w += 1
                     wMoney.append( PipbyRatio)
@@ -440,7 +441,7 @@ def positionCheck (Orders, currentPairPrices,currentRatioPrices,CurrentIndex,Pip
                    
                     removeOrders.append(Orders[i][4])
                     print("This order surprisingly end up wining quiet good actually")
-                    OpenCloseIndexes.append([TradeIndex , CurrentIndex,Pa,Pb,mean,Range,SScurr,SSNewCurr,currA,currB,NcurrA,NcurrB,Orders[i][4],VolA,VolB,EX])
+                    OpenCloseIndexes.append([TradeIndex , CurrentIndex,Pa,Pb,mean,Range,SScurr,SSNewCurr,currA,currB,NcurrA,NcurrB,Orders[i][4],VolA,VolB,EX,SL,PosType])
                     L -= 1
                     w += 1
                     wMoney.append( PipbyRatio)
@@ -448,7 +449,7 @@ def positionCheck (Orders, currentPairPrices,currentRatioPrices,CurrentIndex,Pip
            
             lMoney.append(PipbyRatio)
             print('order number '+str(Orders[i][4])+' is closed with LOST')
-            OpenCloseIndexes.append([TradeIndex , CurrentIndex,Pa,Pb,mean,Range,SScurr,SSNewCurr,currA,currB,NcurrA,NcurrB,Orders[i][4],VolA,VolB,EX])
+            OpenCloseIndexes.append([TradeIndex , CurrentIndex,Pa,Pb,mean,Range,SScurr,SSNewCurr,currA,currB,NcurrA,NcurrB,Orders[i][4],VolA,VolB,EX,SL,PosType])
             removeOrders.append(Orders[i][4])
 
         else :
@@ -465,7 +466,9 @@ def positionCheck (Orders, currentPairPrices,currentRatioPrices,CurrentIndex,Pip
 
 
 
- 
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
 
 def PnLCheck(Curr,NCurr,TradeType):
     Pip = NCurr - Curr
@@ -481,14 +484,18 @@ def PnLCheck(Curr,NCurr,TradeType):
             return ['p',Pip]
 
     
-        
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------      
 
 def RANGE(data):
     max = np.max(data)
     min = np.min(data)
     return max - min
 
-
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
 
 def WinPercentage(Wins,Loses):
     if Loses == 0:
@@ -499,7 +506,9 @@ def WinPercentage(Wins,Loses):
     print('=====================================================================================================================================================================')
     print('=====================================================================================================================================================================')
     return d
-
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
 def PipTable(PipDictAll):
     finalPips ={}
     for pda in PipDictAll:
@@ -529,7 +538,9 @@ def PipTable(PipDictAll):
     for K,V in finalPips.items():
         print("{:<10} {:<30} {:<20}".format(K, V[0],V[1]))
     return finalPips
-
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
 def BetaTable (BetaEval):
     print("{:<10} {:<30} {:<10} {:<30} {:<40}".format('OrderNumber','Vol', 'result','Normaled Pip','TradeType'))
     #print("{:<10} {:<30} {:<10} {:<30} {:<30}{:<10}{:<30}{:<40}".format('OrderNum','Vol A', 'resA','NormalPipA', 'VolB', 'resB','NormalPipB','TradeType'))
@@ -552,8 +563,9 @@ def BetaTable (BetaEval):
     print('===================== ================================================================================================================================================')
 
 
-
-
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
 def CompareEvals(Instruments , ListOfEvaluations , TopNumber = 5):
 
     TopN={}
@@ -583,7 +595,9 @@ def CompareEvals(Instruments , ListOfEvaluations , TopNumber = 5):
             (pip , n) = i[2]
             print("{:<15} {:<6}{:<5}{:<5}{:<5}{:<5}{:<8} {:<30} {:<30}".format(Number,P1,P2,P3,P4,P5,P6,pip,n))
 
-
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
 
 
 def last(n):
@@ -591,4 +605,7 @@ def last(n):
   
 def sort(tuples):
     return sorted(tuples, key=last, reverse= True)
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------------
   
