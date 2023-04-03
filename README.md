@@ -1,5 +1,5 @@
 
-This is a summery of my pair trade strategy . [Pair Trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [Mean Reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy where can eran  high profits when price is as far as possible from mean , and since we expect price`s almost inevitable return toward mean, we can make profit if we have bought or sold accordingly . Here is the **pipe line** :
+This is a summery of my pair trade strategy . [Pair Trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [Mean Reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy where can earn  high profits when price is as far as possible from mean , and since we expect price`s almost inevitable return toward mean, we can make profit if we have bought or sold accordingly . Here is the **pipe line** :
 
 ![image](https://user-images.githubusercontent.com/76734519/228919768-c2632144-2da3-4652-aa5a-8f128d4dfd66.png)
 
