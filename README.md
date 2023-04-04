@@ -11,7 +11,7 @@ We will investigate among 18 Forex pairs and update to the best possible pair at
 
 
 
-Now that we have our ***RatioData*** we will open and close positions base on it . Our strategy is a mean reversion , therefore we will profit more if we open our trade positions when we are as far as possible from the mean . In below image, some points has been marked where there is a considerble distance between them and mean and therefore, **proper candidates** for opening positions . 
+Now that we have our ***RatioData*** we will open and close positions base on it . Our strategy is a mean reversion , therefore we will profit more if we open our trade positions when we are as far as possible from the mean . In below image, some points has been marked where there is a considerble distance between them and mean and therefore, they are **proper candidates** for opening positions . 
 ![image](https://user-images.githubusercontent.com/76734519/228869310-ccf78d12-f8c3-4a17-afbb-b07013d16666.png)
 
 
