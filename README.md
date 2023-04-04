@@ -61,4 +61,4 @@ In other hand , our positions would **lose** if ***RatioData*** price moves oppo
 
 
 
-What has left is **parameter** tuning and **backtesting** using 1-Minute data from 2008 to 2023 .I believe this pair trade can be successfully deployed on various time frames as well. These parameters are  Window Frame lenghth  , StopLoss Coefficient , Centroid Eligibility Coefficient , Centroid Neighborhood Coefficient , Mean Neighborhood Coefficient and Instruments Cool Down time .
+What has left is **parameter tuning** and **backtesting** using 1-Minute data from 2008 to 2023 .I believe this pair trade can be successfully deployed on various time frames as well. These parameters are  Window Frame lenghth  , StopLoss Coefficient , Centroid Eligibility Coefficient , Centroid Neighborhood Coefficient , Mean Neighborhood Coefficient and Instruments Cool Down time .
