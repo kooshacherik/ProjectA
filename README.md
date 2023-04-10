@@ -1,5 +1,5 @@
 # Pair Trade
-This is a summery of my pair trade strategy. [Pair Trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [Mean Reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy which benefit base on our prediction for prices to move toward a constant amount. Here is the **pipe line**:
+This is a summery of my pair trade strategy. [Pair Trade](https://en.wikipedia.org/wiki/Pairs_trade) is a [Mean Reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)) strategy which benefits base on our prediction for prices to move toward a constant amount. Here is the **pipe line**:
 
 ![image](https://user-images.githubusercontent.com/76734519/228919768-c2632144-2da3-4652-aa5a-8f128d4dfd66.png)
 
